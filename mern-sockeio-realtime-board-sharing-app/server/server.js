@@ -6,7 +6,7 @@ const { userJoin, getUsers, userLeave } = require("./utils/user");
 const app = express();
 const server = http.createServer(app);
 const socketIO = require("socket.io");
-const io = new Server(server, {
+const io = new socketIO(server, {
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
