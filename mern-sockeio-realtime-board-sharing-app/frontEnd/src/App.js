@@ -9,14 +9,19 @@ import Sidebar from "./Sidebar";
 import "./style.css";
 
 const server = "https://realtime-whiteboard-application-backend.onrender.com";
+
 const connectionOptions = {
-  "force new connection": true,
-  reconnectionAttempts: "Infinity",
+  forceNew: true,                     
+  reconnectionAttempts: Infinity,     
   timeout: 10000,
-  transports: ["websocket"],
+  path: "/socket.io",               
+  transports: ["polling", "websocket"], 
+  withCredentials: true,
+  secure: true,
 };
 
 const socket = io(server, connectionOptions);
+
 
 const App = () => {
   const [userNo, setUserNo] = useState(0);

@@ -6,10 +6,15 @@ const { userJoin, getUsers, userLeave } = require("./utils/user");
 const app = express();
 const server = http.createServer(app);
 const socketIO = require("socket.io");
-const io = socketIO(server);
+const io = new Server(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+  },
+});
 const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-app.use(cors());
+app.use(cors({ origin: "*", methods: ["GET", "POST"] }));
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
