@@ -61,8 +61,3 @@ io.on("connection", (socket) => {
   });
 });
 
-// serve on port
-
-server.listen(PORT, () =>
-  console.log(`server is listening on http://localhost:${PORT}`)
-);
